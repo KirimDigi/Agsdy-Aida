@@ -68,7 +68,7 @@
             width: 100%;
             height: auto;
             display: block;
-            padding-bottom: 80px;
+            padding-bottom: clamp(45px, 12vw, 80px);
         }
 
         .open-btn {
@@ -216,7 +216,7 @@
             color: #790c04;
             margin-bottom: 25px;
             text-align: center;
-            font-size: 32px;
+            font-size: clamp(24px, 8vw, 34px);
             font-weight: bold;
         }
 
@@ -229,16 +229,16 @@
             margin-bottom: 10px;
             color: #790c04;
             font-weight: bold;
-            font-size: 16px;
+            font-size: clamp(14px, 4vw, 17px);
         }
 
         .form-group input,
         .form-group textarea {
             width: 100%;
-            padding: 15px;
+            padding: clamp(12px, 4vw, 16px);
             border: 2px solid #790c04;
             border-radius: 12px;
-            font-size: 16px;
+            font-size: clamp(14px, 4vw, 17px);
             font-family: inherit;
             background: rgba(255, 255, 255, 0.9);
             transition: all 0.3s ease;
@@ -269,12 +269,12 @@
 
         .send-btn {
             width: auto;
-            padding: 10px 25px;
+            padding: clamp(8px, 2.5vw, 12px) clamp(20px, 6vw, 28px);
             background: #790c04;
             color: white;
             border: none;
             border-radius: 20px;
-            font-size: 14px;
+            font-size: clamp(12px, 3.5vw, 15px);
             font-weight: bold;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -288,7 +288,7 @@
 
         .rsvp-overlay {
             position: absolute;
-            top: 52%;
+            top: 53%;
             left: 50%;
             transform: translate(-50%, -50%);
             width: 90%;
@@ -298,10 +298,10 @@
 
         .rsvp-overlay h2 {
             color: #790c04;
-            margin-top: 40px;
-            margin-bottom: 20px;
+            margin-top: clamp(30px, 8vw, 42px);
+            margin-bottom: clamp(15px, 4vw, 22px);
             text-align: center;
-            font-size: 24px;
+            font-size: clamp(20px, 6vw, 26px);
             font-weight: bold;
             text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8);
         }
@@ -329,11 +329,11 @@
         .rsvp-name {
             font-weight: bold;
             color: #790c04;
-            font-size: 14px;
+            font-size: clamp(12px, 3.5vw, 15px);
         }
 
         .rsvp-status {
-            font-size: 12px;
+            font-size: clamp(11px, 3vw, 13px);
             margin: 5px 0;
         }
 
@@ -346,14 +346,14 @@
         }
 
         .rsvp-message {
-            font-size: 13px;
+            font-size: clamp(11px, 3.2vw, 14px);
             color: #333;
             margin: 5px 0;
             font-style: italic;
         }
 
         .rsvp-timestamp {
-            font-size: 11px;
+            font-size: clamp(10px, 2.8vw, 12px);
             color: #999;
             margin-top: 5px;
         }
@@ -366,8 +366,8 @@
         }
 
         .filter-btn {
-            padding: 6px 15px;
-            font-size: 12px;
+            padding: clamp(5px, 1.5vw, 8px) clamp(12px, 3.5vw, 18px);
+            font-size: clamp(11px, 3vw, 13px);
             border: 1px solid #790c04;
             background: rgba(255, 255, 255, 0.8);
             color: #790c04;
@@ -388,7 +388,7 @@
 
         .maps-link {
             position: absolute;
-            bottom: 215px;
+            bottom: calc(135px + clamp(45px, 12vw, 80px));
             left: 50%;
             transform: translateX(-50%);
             display: flex;
@@ -460,7 +460,7 @@
         }
 
         .page6-content {
-            top: 65%;
+            top: 68%;
         }
 
         .kd-logo {
