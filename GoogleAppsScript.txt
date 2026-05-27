@@ -1,0 +1,73 @@
+// Copy kode ini ke Google Apps Script Editor Anda
+// Buka: https://script.google.com/
+
+function doPost(e) {
+  try {
+    var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+    var data = e.parameter;
+    
+    // Cek apakah sheet sudah ada header, jika belum tambahkan header
+    var lastRow = sheet.getLastRow();
+    if (lastRow === 0) {
+      sheet.appendRow(['Nama', 'Kehadiran', 'Ucapan', 'Tanggal', 'Jam', 'Tahun']);
+    }
+    
+    // Tambahkan data baru
+    sheet.appendRow([
+      data.nama,
+      data.kehadiran,
+      data.ucapan,
+      data.tanggal,
+      data.jam,
+      data.tahun
+    ]);
+    
+    return ContentService.createTextOutput("Success");
+  } catch (error) {
+    return ContentService.createTextOutput("Error: " + error.toString());
+  }
+}
+
+function doGet(e) {
+  try {
+    var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+    var data = [];
+    var lastRow = sheet.getLastRow();
+    
+    // Mulai dari baris 2 (skip header)
+    if (lastRow > 1) {
+      var values = sheet.getRange(2, 1, lastRow - 1, 6).getValues();
+      
+      for (var i = 0; i < values.length; i++) {
+        data.push({
+          nama: values[i][0],
+          kehadiran: values[i][1],
+          ucapan: values[i][2],
+          tanggal: values[i][3],
+          jam: values[i][4],
+          tahun: values[i][5]
+        });
+      }
+    }
+    
+    return ContentService.createTextOutput(JSON.stringify(data))
+      .setMimeType(ContentService.MimeType.JSON);
+  } catch (error) {
+    return ContentService.createTextOutput("Error: " + error.toString());
+  }
+}
+
+// Fungsi untuk testing (bisa dijalankan dari editor)
+function testPost() {
+  var test = {
+    parameter: {
+      nama: "Test User",
+      kehadiran: "hadir",
+      ucapan: "Test ucapan",
+      tanggal: "27/05/2026",
+      jam: "12:00:00",
+      tahun: "2026"
+    }
+  };
+  doPost(test);
+}

@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agody 💙 Aida</title>
+    <meta property="og:title" content="Agody 💙 Aida">
+    <meta property="og:description" content="Hadiri undangan Pernikahan Agody dan Aida, Kamis 05 Juni 2026">
+    <meta property="og:image" content="https://raw.githubusercontent.com/KirimDigi/Agidy-Aida/main/2.jpeg">
+    <meta property="og:image:width" content="800">
+    <meta property="og:image:height" content="1200">
+    <meta property="og:url" content="https://github.com/KirimDigi/Agidy-Aida">
+    <meta property="og:type" content="website">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, ##790c04 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+        }
+
+        .page {
+            display: none;
+            width: 100%;
+            max-width: 480px;
+            min-height: 100vh;
+            background: white;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .cover-image {
+            width: 100%;
+            height: 100vh;
+            object-fit: cover;
+            display: block;
+        }
+
+        .content-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            padding-bottom: 80px;
+        }
+
+        .open-btn {
+            position: absolute;
+            bottom: 5%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #790c04;
+            color: white;
+            border: none;
+            padding: 12px 35px;
+            font-size: 12px;
+            font-weight: bold;
+            border-radius: 20px;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .open-btn:hover {
+            transform: translateX(-50%) scale(1.05);
+            box-shadow: 0 8px 25px rgba(207, 19, 5, 0.966);
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+            position: fixed;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: 480px;
+            background: transparent;
+            z-index: 1000;
+        }
+
+        .nav-btn {
+            background: rgba(255, 255, 255, 0.8);
+            color: #790c04;
+            border: 1px solid #790c04;
+            padding: 8px 20px;
+            font-size: 13px;
+            font-weight: normal;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            background: #790c04;
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .nav-btn:disabled {
+            background: rgba(200, 200, 200, 0.5);
+            color: #999;
+            border-color: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .page-content {
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        .page-content h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 28px;
+        }
+
+        .page-content p {
+            color: #333;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+
+        .music-control {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+            z-index: 100;
+        }
+
+        .music-control span {
+            font-size: 24px;
+        }
+
+        .rsvp-form {
+            padding: 30px 20px;
+            text-align: left;
+            background: transparent;
+            margin: 20px;
+        }
+
+        .rsvp-form h2 {
+            color: #790c04;
+            margin-bottom: 25px;
+            text-align: center;
+            font-size: 32px;
+            font-weight: bold;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            color: #790c04;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #790c04;
+            border-radius: 12px;
+            font-size: 16px;
+            font-family: inherit;
+            background: rgba(255, 255, 255, 0.9);
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #764ba2;
+            box-shadow: 0 0 10px rgba(102, 126, 234, 0.3);
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 20px;
+        }
+
+        .radio-group label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+
+        .radio-group input[type="radio"] {
+            width: auto;
+        }
+
+        .send-btn {
+            width: auto;
+            padding: 10px 25px;
+            background: #790c04;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 10px rgba(102, 126, 234, 0.3);
+        }
+
+        .send-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(145, 29, 14, 0.979);
+        }
+
+        .rsvp-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            max-width: 400px;
+            z-index: 10;
+        }
+
+        .rsvp-overlay h2 {
+            color: #790c04;
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8);
+        }
+
+        .rsvp-list {
+            margin-top: 30px;
+            max-height: 250px;
+            overflow-y: auto;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 15px;
+        }
+
+        .rsvp-item {
+            padding: 12px;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 10px;
+        }
+
+        .rsvp-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .rsvp-name {
+            font-weight: bold;
+            color: #790c04;
+            font-size: 14px;
+        }
+
+        .rsvp-status {
+            font-size: 12px;
+            margin: 5px 0;
+        }
+
+        .rsvp-status.hadir {
+            color: #28a745;
+        }
+
+        .rsvp-status.tidak-hadir {
+            color: #dc3545;
+        }
+
+        .rsvp-message {
+            font-size: 13px;
+            color: #333;
+            margin: 5px 0;
+            font-style: italic;
+        }
+
+        .rsvp-timestamp {
+            font-size: 11px;
+            color: #999;
+            margin-top: 5px;
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+            justify-content: center;
+        }
+
+        .filter-btn {
+            padding: 6px 15px;
+            font-size: 12px;
+            border: 1px solid #790c04;
+            background: rgba(255, 255, 255, 0.8);
+            color: #790c04;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn.active {
+            background: #790c04;
+            color: white;
+        }
+
+        .filter-btn:hover {
+            background: #790c04;
+            color: white;
+        }
+
+        .maps-link {
+            position: absolute;
+            bottom: 220px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            z-index: 10;
+            animation: pulse 2s infinite;
+        }
+
+        .maps-icon {
+            width: 40px;
+            height: 40px;
+            background: white;
+            border-radius: 50%;
+            padding: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .maps-link:hover .maps-icon {
+            transform: scale(1.1);
+        }
+
+        .maps-label {
+            margin-top: 8px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 4px 14px;
+            border-radius: 12px;
+            font-size: 09KALpx;
+            font-weight: bold;
+            color: #790c04;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: translateX(-50%) scale(1);
+            }
+
+            50% {
+                transform: translateX(-50%) scale(1.05);
+            }
+        }
+
+        .guest-name-display {
+            position: absolute;
+            top: 70%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 13px;
+            font-weight: bold;
+            color: #8d2308c2;
+            text-align: center;
+            z-index: 5;
+            max-width: 90%;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Page 1 - Cover with Open Button -->
+    <div class="page active" id="page1">
+        <img src="1.jpeg" alt="Cover Undangan" class="cover-image">
+        <!-- <div class="guest-name-display" id="guestName">Daftar nama tamu</div> -->
+        <button class="open-btn" onclick="openInvitation()">Buka Undangan</button>
+    </div>
+
+    <!-- Pages 2-76 -->
+    <div class="page" id="page2">
+        <img src="2.jpeg" alt="Halaman 2" class="content-image">
+    </div>
+
+    <div class="page" id="page3">
+        <img src="3.jpeg" alt="Halaman 3" class="content-image">
+        <a href="https://maps.app.goo.gl/qL6LMeBm1wLj8dLz5?g_st=iw" target="_blank" class="maps-link">
+            <svg viewBox="0 0 24 24" class="maps-icon" fill="none" stroke="#790c04" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
+                <circle cx="12" cy="9" r="2.5" fill="#790c04" />
+            </svg>
+            <span class="maps-label">Lokasi Acara</span>
+        </a>
+    </div>
+
+    <div class="page" id="page4">
+        <img src="4.jpeg" alt="Halaman 4" class="content-image">
+        <div class="rsvp-overlay">
+            <h2>RSVP Ucapan</h2>
+            <form class="rsvp-form" onsubmit="submitRSVP(event)">
+                <div class="form-group">
+                    <label for="nama">Nama</label>
+                    <input type="text" id="nama" placeholder="Masukkan nama Anda" required>
+                </div>
+                <div class="form-group">
+                    <label>Konfirmasi Kehadiran</label>
+                    <div class="radio-group">
+                        <label>
+                            <input type="radio" name="kehadiran" value="hadir" required>
+                            Hadir
+                        </label>
+                        <label>
+                            <input type="radio" name="kehadiran" value="tidak">
+                            Tidak Hadir
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="ucapan">Ucapan</label>
+                    <textarea id="ucapan" rows="4" placeholder="Tulis ucapan Anda" required></textarea>
+                </div>
+                <button type="submit" class="send-btn">Kirim Ucapan</button>
+            </form>
+            <div class="filter-buttons">
+                <button class="filter-btn active" onclick="filterRSVP('all')">Semua</button>
+                <button class="filter-btn" onclick="filterRSVP('hadir')">Hadir</button>
+                <button class="filter-btn" onclick="filterRSVP('tidak')">Tidak Hadir</button>
+            </div>
+            <div class="rsvp-list" id="rsvpList">
+                <!-- RSVP items will be displayed here -->
+            </div>
+        </div>
+    </div>
+
+    <div class="page" id="page5">
+        <img src="5.jpeg" alt="Halaman 5" class="content-image">
+    </div>
+
+    <div class="page" id="page6">
+        <img src="6.jpeg" alt="Halaman 6" class="content-image">
+    </div>
+
+
+    <!-- Navigation Buttons -->
+    <div class="nav-buttons" id="navButtons" style="display: none;">
+        <button class="nav-btn" id="prevBtn" onclick="prevPage()">Sebelumnya</button>
+        <button class="nav-btn" id="nextBtn" onclick="nextPage()">Selanjutnya</button>
+    </div>
+
+    <script>
+        let currentPage = 1;
+        const totalPages = 6;
+
+        function openInvitation() {
+            currentPage = 2;
+            showPage(currentPage);
+            document.getElementById('navButtons').style.display = 'flex';
+        }
+
+        function showPage(pageNum) {
+            // Hide all pages
+            for (let i = 1; i <= totalPages; i++) {
+                document.getElementById('page' + i).classList.remove('active');
+            }
+
+            // Show current page
+            document.getElementById('page' + pageNum).classList.add('active');
+
+            // Update navigation buttons
+            document.getElementById('prevBtn').disabled = pageNum === 2;
+            document.getElementById('nextBtn').disabled = pageNum === totalPages;
+
+            // Hide next button on last page, but keep prev button
+            if (pageNum === totalPages) {
+                document.getElementById('nextBtn').style.display = 'none';
+            } else {
+                document.getElementById('nextBtn').style.display = 'block';
+            }
+
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        function nextPage() {
+            if (currentPage < totalPages) {
+                currentPage++;
+                showPage(currentPage);
+            }
+        }
+
+        function prevPage() {
+            if (currentPage > 2) {
+                currentPage--;
+                showPage(currentPage);
+            }
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function (e) {
+            if (currentPage >= 2) {
+                if (e.key === 'ArrowRight' || e.key === ' ') {
+                    nextPage();
+                } else if (e.key === 'ArrowLeft') {
+                    prevPage();
+                }
+            }
+        });
+
+        // Touch swipe support
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        document.addEventListener('touchstart', e => {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+
+        document.addEventListener('touchend', e => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+
+        function handleSwipe() {
+            if (currentPage >= 2) {
+                if (touchStartX - touchEndX > 50) {
+                    nextPage();
+                }
+                if (touchEndX - touchStartX > 50) {
+                    prevPage();
+                }
+            }
+        }
+
+        let rsvpData = [];
+        let currentFilter = 'all';
+        const googleScriptUrl = 'https://script.google.com/macros/s/AKfycbw8KnHaOtGYvRG9N-ujzN6okj51FQI92K_Bmn-PuCyIXv4RVogxxU7U7J5LDyAjtiKE/exec';
+
+        // Load RSVP data from Google Sheets when page loads
+        function loadRSVPFromSheets() {
+            fetch(googleScriptUrl)
+                .then(response => response.json())
+                .then(data => {
+                    rsvpData = data.map(item => ({
+                        nama: item.nama,
+                        kehadiran: item.kehadiran,
+                        ucapan: item.ucapan,
+                        timestamp: {
+                            date: item.tanggal,
+                            time: item.jam,
+                            year: item.tahun
+                        }
+                    }));
+                    displayRSVP();
+                })
+                .catch(error => {
+                    console.error('Error loading RSVP data:', error);
+                });
+        }
+
+        // Load data when page opens
+        document.addEventListener('DOMContentLoaded', function () {
+            loadRSVPFromSheets();
+
+            // Parse URL parameter for guest name
+            const urlParams = new URLSearchParams(window.location.search);
+            const guest = urlParams.get('to');
+            if (guest) {
+                document.getElementById('guestName').textContent = guest.replace(/%20/g, ' ');
+            }
+        });
+
+        function submitRSVP(event) {
+            event.preventDefault();
+            const nama = document.getElementById('nama').value;
+            const kehadiran = document.querySelector('input[name="kehadiran"]:checked').value;
+            const ucapan = document.getElementById('ucapan').value;
+
+            const now = new Date();
+            const timestamp = {
+                date: now.toLocaleDateString('id-ID'),
+                time: now.toLocaleTimeString('id-ID'),
+                year: now.getFullYear()
+            };
+
+            const rsvpItem = {
+                nama: nama,
+                kehadiran: kehadiran,
+                ucapan: ucapan,
+                timestamp: timestamp
+            };
+
+            rsvpData.push(rsvpItem);
+            displayRSVP();
+
+            alert('Terima kasih! Ucapan Anda telah terkirim.\n\nNama: ' + nama + '\nKehadiran: ' + kehadiran + '\nUcapan: ' + ucapan);
+
+            // Reset form
+            document.querySelector('.rsvp-form').reset();
+
+            // Send to Google Sheets (placeholder)
+            sendToGoogleSheets(rsvpItem);
+        }
+
+        function displayRSVP() {
+            const rsvpList = document.getElementById('rsvpList');
+            rsvpList.innerHTML = '';
+
+            const filteredData = currentFilter === 'all'
+                ? rsvpData
+                : rsvpData.filter(item => item.kehadiran === currentFilter);
+
+            filteredData.forEach(item => {
+                const rsvpItem = document.createElement('div');
+                rsvpItem.className = 'rsvp-item';
+                rsvpItem.innerHTML = `
+                    <div class="rsvp-name">${item.nama}</div>
+                    <div class="rsvp-status ${item.kehadiran === 'hadir' ? 'hadir' : 'tidak-hadir'}">
+                        ${item.kehadiran === 'hadir' ? '✓ Hadir' : '✗ Tidak Hadir'}
+                    </div>
+                    <div class="rsvp-message">"${item.ucapan}"</div>
+                    <div class="rsvp-timestamp">${item.timestamp.date} | ${item.timestamp.time}</div>
+                `;
+                rsvpList.appendChild(rsvpItem);
+            });
+        }
+
+        function filterRSVP(filter) {
+            currentFilter = filter;
+
+            // Update active button
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            displayRSVP();
+        }
+
+        function sendToGoogleSheets(data) {
+            // Google Sheets integration
+            console.log('Sending to Google Sheets:', data);
+
+            // Format data for Google Apps Script
+            const formData = new FormData();
+            formData.append('nama', data.nama);
+            formData.append('kehadiran', data.kehadiran);
+            formData.append('ucapan', data.ucapan);
+            formData.append('tanggal', data.timestamp.date);
+            formData.append('jam', data.timestamp.time);
+            formData.append('tahun', data.timestamp.year);
+
+            fetch(googleScriptUrl, {
+                method: 'POST',
+                mode: 'no-cors',
+                body: formData
+            }).then(() => {
+                console.log('Data sent to Google Sheets successfully');
+                // Reload data from sheets after sending
+                setTimeout(loadRSVPFromSheets, 1000);
+            }).catch(error => {
+                console.error('Error sending to Google Sheets:', error);
+                alert('Gagal mengirim data ke Google Sheets. Silakan coba lagi.');
+            });
+        }
+    </script>
+</body>
+
+</html>
