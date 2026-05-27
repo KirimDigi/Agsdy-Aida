@@ -19,42 +19,28 @@
             box-sizing: border-box;
         }
 
+        html, body {
+            overflow: hidden;
+            height: 100%;
+        }
+
+        html.scrollable, html.scrollable body {
+            overflow: visible;
+            height: auto;
+        }
+
         body {
             font-family: 'Georgia', serif;
             background: linear-gradient(135deg, #790c04 0%, #764ba2 100%);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow-x: hidden;
         }
 
         .page {
-            display: none;
             width: 100%;
             max-width: 480px;
-            min-height: 100vh;
             background: white;
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
             position: relative;
-            overflow: hidden;
-        }
-
-        .page.active {
-            display: block;
-            animation: fadeIn 0.5s ease-in-out;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            margin: 0 auto;
         }
 
         .cover-image {
@@ -68,7 +54,6 @@
             width: 100%;
             height: auto;
             display: block;
-            padding-bottom: clamp(45px, 12vw, 80px);
         }
 
         .open-btn {
@@ -79,8 +64,8 @@
             background: #790c04;
             color: white;
             border: none;
-            padding: 12px 35px;
-            font-size: 12px;
+            padding: clamp(10px, 3.5vw, 14px) clamp(28px, 9vw, 40px);
+            font-size: clamp(11px, 3.2vw, 14px);
             font-weight: bold;
             border-radius: 20px;
             cursor: pointer;
@@ -93,65 +78,6 @@
             transform: translateX(-50%) scale(1.05);
             box-shadow: 0 8px 25px rgba(207, 19, 5, 0.966);
         }
-
-        .nav-buttons {
-            display: flex;
-            justify-content: space-between;
-            padding: 20px;
-            position: fixed;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100%;
-            max-width: 480px;
-            background: transparent;
-            z-index: 1000;
-        }
-
-        .nav-btn {
-            background: rgba(255, 255, 255, 0.8);
-            color: #790c04;
-            border: 1px solid #790c04;
-            padding: 8px 20px;
-            font-size: 13px;
-            font-weight: normal;
-            border-radius: 15px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .nav-btn:hover {
-            background: #790c04;
-            color: white;
-            transform: scale(1.05);
-        }
-
-        .nav-btn:disabled {
-            background: rgba(200, 200, 200, 0.5);
-            color: #999;
-            border-color: #ccc;
-            cursor: not-allowed;
-            transform: none;
-        }
-
-        .page-content {
-            padding: 30px 20px;
-            text-align: center;
-        }
-
-        .page-content h2 {
-            color: #667eea;
-            margin-bottom: 20px;
-            font-size: 28px;
-        }
-
-        .page-content p {
-            color: #333;
-            line-height: 1.8;
-            margin-bottom: 15px;
-            font-size: 16px;
-        }
-
 
         .music-control {
             position: fixed;
@@ -206,10 +132,14 @@
         }
 
         .rsvp-form {
-            padding: 30px 20px;
+            padding: 20px;
             text-align: left;
             background: transparent;
-            margin: 20px;
+            margin: 15px 20px;
+        }
+
+        .rsvp-form> :last-child {
+            margin-bottom: 0;
         }
 
         .rsvp-form h2 {
@@ -221,7 +151,7 @@
         }
 
         .form-group {
-            margin-bottom: 25px;
+            margin-bottom: 15px;
         }
 
         .form-group label {
@@ -288,9 +218,9 @@
 
         .rsvp-overlay {
             position: absolute;
-            top: 50%;
+            top: -4%;
             left: 50%;
-            transform: translate(-50%, -50%);
+            transform: translateX(-50%);
             width: 90%;
             max-width: 400px;
             z-index: 10;
@@ -307,8 +237,8 @@
         }
 
         .rsvp-list {
-            margin-top: 30px;
-            max-height: 250px;
+            margin-top: 12px;
+            max-height: clamp(120px, 22vh, 170px);
             overflow-y: auto;
             background: rgba(255, 255, 255, 0.9);
             border-radius: 15px;
@@ -316,14 +246,12 @@
         }
 
         .rsvp-item {
-            padding: 12px;
+            padding: 6px 10px;
             border-bottom: 1px solid #eee;
-            margin-bottom: 10px;
         }
 
         .rsvp-item:last-child {
             border-bottom: none;
-            margin-bottom: 0;
         }
 
         .rsvp-name {
@@ -361,7 +289,7 @@
         .filter-buttons {
             display: flex;
             gap: 10px;
-            margin-top: 15px;
+            margin-top: 8px;
             justify-content: center;
         }
 
@@ -388,9 +316,9 @@
 
         .maps-link {
             position: absolute;
-            bottom: calc(185px + clamp(45px, 12vw, 80px));
+            bottom: 21%;
             left: 50%;
-            transform: translateX(-50%);
+            transform: translateX(-55%);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -400,11 +328,11 @@
         }
 
         .maps-icon {
-            width: 35px;
-            height: 35px;
+            width: clamp(28px, 8vw, 36px);
+            height: clamp(28px, 8vw, 36px);
             background: white;
             border-radius: 50%;
-            padding: 10px;
+            padding: clamp(7px, 2.5vw, 11px);
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
             transition: transform 0.3s ease;
         }
@@ -418,7 +346,7 @@
             background: rgba(255, 255, 255, 0.9);
             padding: 4px 14px;
             border-radius: 12px;
-            font-size: 11px;
+            font-size: clamp(10px, 2.8vw, 12px);
             font-weight: bold;
             color: #790c04;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
@@ -446,6 +374,10 @@
             z-index: 10;
         }
 
+        #page1.opened .open-btn {
+            display: none;
+        }
+
         .guest-name-display {
             position: absolute;
             top: 70%;
@@ -460,7 +392,7 @@
         }
 
         .page6-content {
-            top: 61%;
+            top: 71%;
         }
 
         .kd-logo {
@@ -495,7 +427,7 @@
     </div>
 
     <!-- Page 1 - Cover with Open Button -->
-    <div class="page active" id="page1">
+    <div class="page" id="page1">
         <img src="1.jpeg" alt="Cover Undangan" class="cover-image">
         <!-- <div class="guest-name-display" id="guestName">Daftar nama tamu</div> -->
         <button class="open-btn" onclick="openInvitation()">Buka Undangan</button>
@@ -589,17 +521,7 @@
         </div>
     </div>
 
-
-    <!-- Navigation Buttons -->
-    <div class="nav-buttons" id="navButtons" style="display: none;">
-        <button class="nav-btn" id="prevBtn" onclick="prevPage()">Sebelumnya</button>
-        <button class="nav-btn" id="nextBtn" onclick="nextPage()">Selanjutnya</button>
-    </div>
-
     <script>
-        let currentPage = 1;
-        const totalPages = 6;
-
         let musicPlaying = false;
 
         function toggleMusic() {
@@ -616,10 +538,11 @@
         }
 
         function openInvitation() {
-            currentPage = 2;
-            showPage(currentPage);
-            document.getElementById('navButtons').style.display = 'flex';
-            // Auto play music on open
+            document.documentElement.classList.add('scrollable');
+            document.getElementById('page1').classList.add('opened');
+            setTimeout(() => {
+                window.scrollTo({ top: window.innerHeight, behavior: 'smooth' });
+            }, 100);
             setTimeout(() => {
                 const audio = document.getElementById('bgMusic');
                 const icon = document.getElementById('musicIcon');
@@ -627,79 +550,6 @@
                 musicPlaying = true;
                 icon.textContent = '🔊';
             }, 300);
-        }
-
-        function showPage(pageNum) {
-            // Hide all pages
-            for (let i = 1; i <= totalPages; i++) {
-                document.getElementById('page' + i).classList.remove('active');
-            }
-
-            // Show current page
-            document.getElementById('page' + pageNum).classList.add('active');
-
-            // Update navigation buttons
-            document.getElementById('prevBtn').disabled = pageNum === 2;
-            document.getElementById('nextBtn').disabled = pageNum === totalPages;
-
-            // Hide next button on last page, but keep prev button
-            if (pageNum === totalPages) {
-                document.getElementById('nextBtn').style.display = 'none';
-            } else {
-                document.getElementById('nextBtn').style.display = 'block';
-            }
-
-            // Scroll to top
-            window.scrollTo(0, 0);
-        }
-
-        function nextPage() {
-            if (currentPage < totalPages) {
-                currentPage++;
-                showPage(currentPage);
-            }
-        }
-
-        function prevPage() {
-            if (currentPage > 2) {
-                currentPage--;
-                showPage(currentPage);
-            }
-        }
-
-        // Keyboard navigation
-        document.addEventListener('keydown', function (e) {
-            if (currentPage >= 2) {
-                if (e.key === 'ArrowRight' || e.key === ' ') {
-                    nextPage();
-                } else if (e.key === 'ArrowLeft') {
-                    prevPage();
-                }
-            }
-        });
-
-        // Touch swipe support
-        let touchStartX = 0;
-        let touchEndX = 0;
-
-        document.addEventListener('touchstart', e => {
-            touchStartX = e.changedTouches[0].screenX;
-        });
-
-        document.addEventListener('touchend', e => {
-            touchEndX = e.changedTouches[0].screenX;
-            handleSwipe();
-        });
-
-        function handleSwipe() {
-            if (currentPage >= 2) {
-                if (touchStartX - touchEndX > 50) {
-                    nextPage();
-                }
-                if (touchEndX - touchStartX > 50) {
-                    prevPage();
-                }
-            }
         }
 
         let rsvpData = [];
