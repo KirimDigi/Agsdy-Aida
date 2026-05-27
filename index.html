@@ -73,7 +73,7 @@
 
         .open-btn {
             position: absolute;
-            bottom: 26%;
+            bottom: 14%;
             left: 50%;
             transform: translateX(-50%);
             background: #790c04;
@@ -388,7 +388,7 @@
 
         .maps-link {
             position: absolute;
-            bottom: 215px;
+            bottom: 280px;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
@@ -457,6 +457,28 @@
             text-align: center;
             z-index: 5;
             max-width: 90%;
+        }
+
+        .page6-content {
+            top: 65%;
+        }
+
+        .kd-logo {
+            width: clamp(22px, 6vw, 32px);
+            height: auto;
+        }
+
+        .kd-social {
+            gap: clamp(10px, 3vw, 14px);
+        }
+
+        .kd-social svg {
+            width: clamp(13px, 4vw, 18px);
+            height: clamp(13px, 4vw, 18px);
+        }
+
+        .kd-text {
+            font-size: clamp(10px, 3vw, 12px);
         }
     </style>
 </head>
@@ -542,23 +564,23 @@
     <div class="page" id="page6">
         <img src="6.jpeg" alt="Halaman 6" class="content-image">
         <div class="page6-content">
-            <img src="kirimdigi.jpg" alt="KirimDigi" style="width:50px; height:auto;">
-            <p style="color:#790c04; font-size:13px; margin-top:10px; font-weight:bold;">Made With &#10083;&#65039;
+            <img src="kirimdigi.jpg" alt="KirimDigi" class="kd-logo">
+            <p class="kd-text" style="color:#790c04; font-weight:bold; margin-top:8px;">Made With &#10083;&#65039;
                 KirimDigi</p>
-            <p style="color:#790c04; font-size:12px; margin-top:5px;">Hubungi Kami Untuk :</p>
-            <p style="color:#790c04; font-size:12px; margin-top:3px;">Website, Aplikasi, Undangan Digital dan Digi cs ai
+            <p class="kd-text" style="color:#790c04; margin-top:4px;">Hubungi Kami Untuk :</p>
+            <p class="kd-text" style="color:#790c04; margin-top:2px;">Website, Aplikasi, Undangan Digital dan Digi cs ai
             </p>
-            <div style="margin-top:12px; display:flex; justify-content:center; gap:15px;">
-                <a href="https://instagram.com/kirimdigi" target="_blank" style="display:inline-block;">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="#790c04">
+            <div class="kd-social" style="margin-top:10px; display:flex; justify-content:center;">
+                <a href="https://instagram.com/kirimdigi" target="_blank">
+                    <svg viewBox="0 0 24 24" fill="#790c04">
                         <rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke="#790c04" stroke-width="1.5"
                             fill="none" />
                         <circle cx="12" cy="12" r="5" stroke="#790c04" stroke-width="1.5" fill="none" />
                         <circle cx="17.5" cy="6.5" r="1.5" fill="#790c04" />
                     </svg>
                 </a>
-                <a href="https://tiktok.com/@kirimdigi.id" target="_blank" style="display:inline-block;">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="#790c04">
+                <a href="https://tiktok.com/@kirimdigi.id" target="_blank">
+                    <svg viewBox="0 0 24 24" fill="#790c04">
                         <path
                             d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" />
                     </svg>
